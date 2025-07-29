@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="d-flex" style="min-height: 100vh">
+      <div id="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <aside id="sidebar">
+        <div class="sidebar-header">
+          <h4>Menu</h4>
+        </div>
+        <div class="theme-toggle">
+          <label class="switch">
+            <input type="checkbox" id="toggle-theme" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="sidebar-actions">
+          <button id="logout-btn">Logout</button>
+          <button id="export-btn">Export</button>
+          <input type="file" id="import-input" accept=".json" />
+        </div>
+      </aside>
+      <div class="container flex-grow-1">
+        <main class="flex-grow-1 p-4">
+          <h1 class="mb-4 text-center">📝 To-Do List</h1>
+          <form id="task-form" class="row g-2 align-items-center">
+            <div class="col-12 col-md-3">
+              <input
+                type="text"
+                id="search-input"
+                class="form-control"
+                placeholder="Cari tugas..."
+              />
+            </div>
+            <div class="col-12 col-md-3">
+              <input
+                type="text"
+                id="task-input"
+                class="form-control"
+                placeholder="Tambahkan tugas..."
+              />
+            </div>
+            <div class="col-12 col-md-3">
+              <input
+                type="datetime-local"
+                id="deadline-input"
+                class="form-control"
+              />
+            </div>
+            <div class="col-12 col-md-3">
+              <button id="add-task-btn" class="btn btn-primary w-100">
+                Tambah
+              </button>
+            </div>
+          </form>
+
+          <div class="row g-2 my-3">
+            <div
+              class="col-12 col-md-auto d-flex align-items-center gap-2 flex-wrap"
+            >
+              <div class="priority-group">
+                <label
+                  ><input type="radio" name="priority" value="biasa" checked />
+                  Biasa ⚪</label
+                >
+                <label
+                  ><input type="radio" name="priority" value="penting" />
+                  Penting 🔴</label
+                >
+              </div>
+            </div>
+
+            <div class="col-12 col-md d-flex gap-2 flex-wrap">
+              <button
+                class="filter-btn btn btn-outline-secondary active"
+                data-filter="all"
+              >
+                Semua
+              </button>
+              <button
+                class="filter-btn btn btn-outline-secondary"
+                data-filter="completed"
+              >
+                Selesai
+              </button>
+              <button
+                class="filter-btn btn btn-outline-secondary"
+                data-filter="pending"
+              >
+                Belum Selesai
+              </button>
+              <button id="clear-all-btn" class="btn btn-outline-danger">
+                🧹 Hapus Semua
+              </button>
+            </div>
+          </div>
+
+          <ul id="task-list" class="list-group"></ul>
+        </main>
+      </div>
+    </div>
+    <div id="toast" class="toast">Tugas ditambahkan!</div>
+
+    <audio id="audio-notify" src="assets/reminder.wav" preload="auto"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script>
+      window.apiBaseURL = "http://localhost:3000";
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

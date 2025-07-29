@@ -1,0 +1,68 @@
+[
+  {
+    "email": "admin@gmail.com",
+    "password": "$2b$10$MUANt9l5HD2wVzUP2koAPuQuFv.TXrVX4jfKtio1T3HJNhmgSa8i2",
+    "tasks": [
+      {
+        "id": 1753765319220,
+        "text": "mengajar rayen",
+        "completed": true,
+        "createdAt": "2025-07-29T05:01:59.220Z",
+        "priority": "biasa",
+        "pinned": false,
+        "deadline": "2025-07-30T17:22"
+      },
+      {
+        "id": 1752649732462,
+        "text": "hai2",
+        "completed": true,
+        "createdAt": "2025-07-16T07:08:52.462Z",
+        "priority": "biasa",
+        "pinned": false,
+        "deadline": ""
+      },
+      {
+        "id": 1752649658183,
+        "text": "makan bakso",
+        "completed": true,
+        "createdAt": "2025-07-16T07:07:38.183Z",
+        "priority": "penting",
+        "pinned": false,
+        "deadline": "2025-07-17"
+      },
+      {
+        "id": 1752649704569,
+        "text": "hai",
+        "completed": false,
+        "createdAt": "2025-07-16T07:08:24.569Z",
+        "priority": "biasa",
+        "pinned": false,
+        "deadline": "2025-07-24"
+      },
+      {
+        "id": 1752631046545,
+        "text": "mengedit",
+        "completed": false,
+        "createdAt": "2025-07-16T01:57:26.545Z",
+        "priority": "penting",
+        "pinned": false,
+        "deadline": "2025-07-24"
+      }
+    ]
+  },
+  {
+    "email": "fadhli@gmail.com",
+    "password": "$2b$10$mEk36dn3NHsI0BkhD84eVOCEdwlITau1hJu949snckEylahu0TbG.",
+    "tasks": [
+      {
+        "id": 1753778434577,
+        "text": "mengajar",
+        "completed": true,
+        "createdAt": "2025-07-29T08:40:34.577Z",
+        "priority": "biasa",
+        "pinned": false,
+        "deadline": null
+      }
+    ]
+  }
+]

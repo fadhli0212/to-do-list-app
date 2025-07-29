@@ -1,0 +1,771 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+.container {
+  position: relative;
+  background-color: #fff;
+  margin-top: 60px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 1500px;
+}
+
+h1 {
+  text-align: center;
+  color: #000d00;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: 2px solid #007bff;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #005fc2;
+}
+
+.toast {
+  position: fixed; /* berubah dari fixed ke relative karena container-nya yang fixed */
+  background-color: #17a2b8;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: 9999;
+  font-weight: bold;
+  display: flex;
+  top: 1rem;
+  right: 1rem;
+  flex-direction: column;
+  white-space: nowrap;
+  max-width: 300px;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast.info {
+  background-color: #17a2b8;
+}
+
+.filter-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ddd;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background-color: #bbb;
+}
+
+.filter-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+#task-list li {
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+  margin: 10px auto;
+}
+
+#task-list li:hover {
+  background-color: #dbe9ff;
+}
+
+#task-list li span {
+  flex: 1;
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.delete-btn,
+.edit-btn {
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background-color: #ffa500;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+.edit-btn:hover {
+  background-color: #cc8400;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-item {
+  animation: fadeSlideIn 0.4s ease forwards;
+}
+
+#clear-all-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#clear-all-btn:hover {
+  background-color: #b02a37;
+}
+
+#clear-all-btn.hidden {
+  display: none;
+}
+
+.timestamp {
+  color: gray;
+  font-size: 0.8rem;
+  margin-right: 10px;
+}
+
+.task-item {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.06);
+}
+
+.task-item:hover {
+  background-color: #f1f1f1;
+}
+
+.task-item.selesai {
+  background-color: #d4edda !important;
+  border-left: 5px solid green;
+}
+
+.task-item.belum {
+  background-color: #f8d7da !important;
+  border-left: 5px solid red;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-left {
+  flex: 1 1 35%;
+  cursor: pointer;
+}
+
+.task-text {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  word-break: break-word;
+}
+
+.task-text:hover {
+  background-color: #eaeaea;
+}
+
+.status-label,
+.timestamp,
+.priority-label,
+.deadline-label {
+  white-space: nowrap;
+}
+
+.status-label {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.status-label input[type="checkbox"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.task-middle {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.task-right,
+.action-btns {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 6px;
+}
+
+.priority-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 0.85rem;
+}
+.priority-group label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.priority-label {
+  font-weight: 600;
+  color: #d00000;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#search-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  width: 100%;
+  margin: 10px auto;
+  display: block;
+  background-color: #f9f9f9;
+  max-width: 300px;
+}
+
+.pinned {
+  box-shadow: 0 0 0 3px gold;
+}
+
+.deadline-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.deadline-input {
+  font-size: 0.8rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.action-btns button {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+}
+
+.task-item.selesai .deadline-label {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-item.belum .deadline-label {
+  color: red;
+  font-weight: bold;
+}
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 4px;
+  width: 100%;
+  background: #333;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: white;
+  color: black;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transform: translateX(-100%);
+  transition: background-color 0.4s ease, color 0.4s ease;
+
+  z-index: 1050;
+}
+
+#sidebar h4 {
+  margin-top: 60px;
+}
+
+#sidebar.sidebar-visible {
+  transform: translateX(0);
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#sidebar button,
+#sidebar input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#sidebar button:hover {
+  background-color: #555;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .container {
+  background-color: #282626;
+  color: #fff8f8;
+  border-radius: 30px;
+  border-bottom: 20px;
+}
+
+body.dark h1 {
+  color: #b4b1b1;
+}
+
+main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark input,
+body.dark input[type="text"],
+body.dark input[type="date"],
+body.dark textarea,
+body.dark select {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #555;
+}
+body.dark input::placeholder {
+  color: #aaa;
+}
+
+body.dark button,
+body.dark .filter-btn,
+body.dark #clear-all-btn {
+  background-color: #4b92fe;
+  color: white;
+  font-weight: bold;
+}
+body.dark button:hover,
+body.dark .filter-btn:hover,
+body.dark #clear-all-btn:hover {
+  background-color: #666;
+}
+
+body.dark .filter-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+body.dark .task-item {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+body.dark .task-item.completed {
+  background-color: #305030 !important;
+}
+body.dark .task-item.selesai {
+  background-color: #2e4832 !important;
+}
+body.dark .task-item.belum {
+  background-color: #4e2a2a !important;
+}
+
+body.dark .task-text:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+body.dark .deadline-label {
+  color: #ccc;
+}
+body.dark .timestamp,
+body.dark .task-middle {
+  color: #bbb;
+}
+
+body.dark #sidebar {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+body.dark #sidebar button,
+body.dark #sidebar input[type="file"] {
+  background-color: #333;
+  color: white;
+}
+body.dark #sidebar button:hover {
+  background-color: #555;
+}
+
+body.dark .priority-label {
+  color: #ff8c8c;
+}
+body.dark .priority-group label {
+  color: #eee;
+}
+
+body,
+.container,
+button,
+input,
+.task-item,
+#sidebar {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark #sidebar {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  box-shadow: 4px 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark #sidebar h4 {
+  color: #ffffff;
+}
+
+body.dark #sidebar button,
+body.dark #sidebar input[type="file"] {
+  background-color: #333;
+  color: #eee;
+  border: none;
+}
+
+body.dark #sidebar button:hover {
+  background-color: #555;
+}
+
+body.dark .close-btn {
+  color: #eee;
+}
+
+body.dark .hamburger span {
+  background: #f0f0f0;
+}
+
+body.dark .hamburger.active span:nth-child(1) {
+  background-color: #f0f0f0;
+}
+
+body.dark .hamburger.active span:nth-child(3) {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  body.sidebar-hidden .container {
+    margin-left: 12px;
+    border-radius: 16px;
+  }
+
+  .container {
+    border-radius: 16px;
+    margin-left: 10px;
+    outline: 4px dashed limegreen !important;
+    z-index: 1;
+    margin-right: 10px;
+  }
+
+  #task-form > div {
+    margin-bottom: 10px;
+  }
+
+  .task-left,
+  .task-middle,
+  .task-right,
+  .action-btns {
+    width: 100%;
+  }
+
+  .task-item > div {
+    padding-bottom: 6px;
+  }
+
+  .deadline-input {
+    width: 100%;
+  }
+  .task-item {
+    padding: 0.75rem;
+    width: 92%;
+  }
+
+  .task-middle {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .task-text {
+    font-size: 1rem;
+    padding: 0 1rem;
+    display: block;
+    word-break: break-word;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .priority-label,
+  .deadline-label,
+  .timestamp {
+    display: block;
+    margin: 2px 0;
+  }
+
+  .status-label {
+    display: flex;
+    align-items: center;
+  }
+
+  .action-btns {
+    justify-content: start;
+    margin-top: 8px;
+  }
+
+  .action-btns button {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+
+  .deadline-label {
+    font-size: 0.75rem;
+    white-space: normal;
+  }
+
+  .task-text {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  #sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    width: 240px;
+    background-color: white;
+    transition: left 0.3s ease;
+    z-index: 1050;
+  }
+
+  #sidebar.sidebar-visible {
+    left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .container {
+    margin-left: 0 !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .filter-btn {
+    width: 100%;
+  }
+
+  #clear-all-btn {
+    width: 100%;
+  }
+}

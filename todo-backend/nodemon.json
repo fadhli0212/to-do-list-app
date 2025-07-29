@@ -1,0 +1,5 @@
+{
+  "watch": ["server.js", "authUtils.js"],
+  "ignore": ["users.json", "**/users.json", "*.log"],
+  "ext": "js,json"
+}

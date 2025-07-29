@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="d-flex flex-column align-items-center justify-content-center">
+    <h1 class="welcome">Selamat Datang! 👋</h1>
+
+    <div
+      id="login-card"
+      class="card p-4 shadow"
+      style="width: 100%; max-width: 400px"
+    >
+      <h2 class="mb-3 text-center">Login</h2>
+      <div class="text-end mb-3">
+        <button id="toggle-theme" class="btn btn-sm btn-outline-secondary">
+          🌙 Mode Gelap
+        </button>
+      </div>
+      <form id="login-form">
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="email anda..."
+          />
+          <label for="email">Email</label>
+          <div id="email-error" class="form-text text-danger d-none">
+            Email tidak valid
+          </div>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="********"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              id="toggle-password"
+              tabindex="-1"
+            >
+              👁️
+            </button>
+          </div>
+          <div id="password-error" class="form-text text-danger d-none">
+            Password wajib diisi
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" id="login-btn">
+          Masuk
+        </button>
+      </form>
+      <div class="text-center mt-3">
+        <small>Belum punya akun? <a href="register.html">Daftar</a></small>
+      </div>
+    </div>
+
+    <script>
+      window.apiBaseURL = "http://localhost:3000";
+    </script>
+    <script src="login.js"></script>
+    <audio id="login-sound" src="suara effek.wav" preload="auto"></audio>
+    <audio id="fail-sound" src="error-08-206492.mp3" preload="auto"></audio>
+  </body>
+</html>

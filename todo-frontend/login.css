@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(-45deg, #a1c4fd, #c2e9fb, #fbc2eb, #fad0c4);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+  transition: background 0.5s ease;
+}
+
+@keyframes flowingGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#login-card.animate-bg {
+  background: radial-gradient(
+    circle at center,
+    white 0%,
+    rgb(247, 173, 225) 10%,
+    #cce0ff 20%,
+    #99ccff 40%,
+    #66b2ff 60%,
+    #cce0ff 80%,
+    #000,
+    white 100%
+  );
+  background-size: 400% 400%;
+  animation: swirlFade 1.5s ease forwards;
+  border-radius: 3rem; /* opsional buat bikin rada bulat */
+
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(102, 178, 255, 0.5), 0 0 60px rgba(153, 204, 255, 0.3);
+}
+
+@keyframes swirlFade {
+  0% {
+    background-position: 100% 0%;
+    opacity: 0.8;
+  }
+  50% {
+    background-position: 50% 100%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 0.9;
+  }
+}
+
+.animate-bg {
+  animation: flowingGradient 3s ease-in-out forwards;
+}
+
+/* Transisi lembut saat mode berubah */
+body,
+.card,
+input,
+label,
+a,
+small,
+h2 {
+  transition: all 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #f1f1f1;
+}
+
+.card.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #2a2a2a;
+}
+
+.dark-mode input {
+  background-color: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+.dark-mode input::placeholder {
+  color: #aaa;
+}
+
+.dark-mode label,
+.dark-mode small,
+.dark-mode a {
+  color: #ccc;
+}
+
+.dark-mode a:hover {
+  color: #fff;
+}
+
+/* Tombol toggle lebih halus */
+#toggle-theme {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#toggle-theme:hover {
+  background-color: #e2e6ea;
+  color: #000;
+}
+
+body.dark-mode #toggle-theme {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+body.dark-mode #toggle-theme:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1.welcome {
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  animation: fadeIn 1.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-floating > label {
+  color: #777;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .form-floating > label {
+  color: #aaa;
+}
+
+.form-floating input:focus ~ label,
+.form-floating input:not(:placeholder-shown) ~ label {
+  color: #333;
+}
+
+.dark-mode .form-floating input:focus ~ label,
+.dark-mode .form-floating input:not(:placeholder-shown) ~ label {
+  color: #000;
+}
+input.is-invalid {
+  border-color: red !important;
+  background-color: #ffe6e6;
+}
+input.d-none {
+  display: none;
+}
+.shake {
+  animation: shake 0.3s;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.3s;
+}
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 1rem;
+  }
+
+  #login-card {
+    padding: 1.5rem !important;
+    border-radius: 16px;
+  }
+
+  h1.welcome {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .form-floating label {
+    font-size: 0.9rem;
+  }
+
+  #toggle-theme {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #login-card {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
